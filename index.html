@@ -1,0 +1,1398 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Лучшая имитационная модель России 2026</title>
+  <meta name="description" content="Конкурс: номинации, призовой фонд, этапы, подача заявки." />
+
+  <!-- Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#070b16;
+      --white:#fff;
+
+      /* Hero blues (light) */
+      --blue1:#6c97d7;
+      --blue2:#b6d1ff;
+
+      /* Dark theme (dark blue) */
+      --dark1:#06102a;
+      --dark2:#071a3b;
+      --dark3:#050816;
+
+      /* Deeper dark (for code-rain zone) */
+      --deepBlue:#040a1a;
+      --deepBlue2:#030714;
+
+      /* Cards on dark */
+      --cardA: rgba(11,36,86,.92);
+      --cardB: rgba(7,26,59,.92);
+
+      /* Buttons */
+      --btnDark:#0a1a3f;
+      --btnDark2:#0b2a66;
+      --btnBlue:#89aee2;
+
+      /* Stats pill theme */
+      --pillBg1: rgba(6,16,42,.70);
+      --pillBg2: rgba(7,26,59,.48);
+      --pillBorder: rgba(255,255,255,.18);
+
+      /* Dark text on white sections */
+      --ink: #071a3b;
+
+      /* Prize card gradient (also used for steps + CTA in "How to") */
+      --prizeGrad1:#0b3e86;
+      --prizeGrad2:#2f69b6;
+
+      --max:1200px;
+      --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--font);
+      font-weight:500;
+      color:var(--white);
+      background:var(--bg);
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 24px}
+    .spacer{flex:1}
+
+    /* ===== NAV ===== */
+    .navWrap{
+      position:sticky;top:0;z-index:50;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .nav{
+      height:74px;
+      display:flex;align-items:center;gap:18px;
+    }
+    .brand{display:flex;align-items:center}
+    .brandLogoImg{
+      height:42px;width:auto;display:block;object-fit:contain;
+      background:transparent;border:0;border-radius:0;
+    }
+
+    .links{display:flex;gap:22px;align-items:center}
+    .links a{
+      font-weight:600;font-size:14px;color:var(--ink);opacity:.86;
+    }
+    .links a:hover{opacity:1}
+    .links .placeholder{
+      font-weight:600;font-size:14px;color:var(--ink);
+      opacity:.55;cursor:default;user-select:none;
+    }
+
+    .navBtn{
+      padding:12px 18px;border-radius:999px;border:0;
+      background: linear-gradient(180deg, var(--btnDark2), var(--btnDark));
+      color:#fff;font-weight:700;cursor:pointer;box-shadow:none !important;
+      transition: transform .15s ease, filter .15s ease;
+      display:inline-flex;align-items:center;justify-content:center;
+    }
+    .navBtn:hover{transform:translateY(-1px); filter:brightness(1.07)}
+    .navBtn:active{transform:translateY(0); filter:brightness(1.02)}
+    .burger{display:none}
+
+    .mobileMenu{display:none;padding:10px 0 18px;}
+    .mobileMenu a, .mobileMenu span{
+      display:block;padding:12px 0;color:var(--ink);
+      font-weight:700;border-top:1px solid rgba(0,0,0,.06);
+    }
+    .mobileMenu span{opacity:.6}
+
+    /* ===== HERO ===== */
+    .hero{
+      background: linear-gradient(180deg, var(--blue1), var(--blue2));
+      position:relative;overflow:hidden;text-align:center;
+      min-height: calc(100vh - 74px);
+      display:flex;align-items:center;
+      opacity: var(--heroOpacity, 1);
+      filter: blur(var(--heroBlur, 0px));
+      transition: opacity .08s linear, filter .08s linear;
+      will-change: opacity, filter;
+      z-index:1;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background: radial-gradient(900px 520px at 50% 25%, rgba(0,0,0,.10), rgba(0,0,0,.30) 55%, rgba(0,0,0,.36));
+      pointer-events:none;
+    }
+    .heroInner{position:relative;max-width: 980px;margin:0 auto;padding: 54px 0 46px;}
+    .dateLine{font-weight:600;letter-spacing:.06em;opacity:.92;font-size:18px;text-transform:uppercase;}
+    .heroTitle{
+      margin:18px 0 0;font-weight:800;letter-spacing:-0.02em;
+      line-height:1.02;font-size: clamp(40px, 5vw, 78px);
+      text-transform:uppercase;
+    }
+    .heroTitle .line{display:block}
+    .heroTitle .line3{white-space:nowrap}
+
+    .heroActions{margin-top:18px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
+    .cta{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:18px 34px;border-radius:999px;border:0;
+      background: linear-gradient(180deg, var(--btnDark2), var(--btnDark));
+      color:#fff;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:18px;
+      cursor:pointer;box-shadow:none !important;
+      transition: transform .15s ease, filter .15s ease;
+      min-width:260px;
+    }
+    .cta:hover{transform:translateY(-1px); filter:brightness(1.08)}
+    .cta:active{transform:translateY(0); filter:brightness(1.02)}
+
+    .watchBtn{
+      display:inline-flex;align-items:center;gap:12px;
+      padding:14px 18px 14px 14px;border-radius:999px;
+      background: rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.22);
+      color: rgba(255,255,255,.95);
+      font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:14px;
+      box-shadow:none !important;
+      transition: transform .15s ease, filter .15s ease, background .15s ease;
+      backdrop-filter: blur(6px);
+      white-space:nowrap;cursor:pointer;
+    }
+    .watchBtn:hover{transform:translateY(-1px); filter:brightness(1.06); background: rgba(255,255,255,.18);}
+    .watchBtn:active{transform:translateY(0); filter:brightness(1.02)}
+    .playIcon{
+      width:34px;height:34px;border-radius:999px;background: rgba(255,255,255,.85);
+      display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+    }
+    .playIcon::before{
+      content:"";display:block;width:0;height:0;
+      border-left: 10px solid rgba(0,0,0,.70);
+      border-top: 6px solid transparent;border-bottom: 6px solid transparent;
+      margin-left:2px;
+    }
+    .heroFootnote{margin-top:18px;color: rgba(255,255,255,.72);font-size:13px;letter-spacing:.02em;}
+
+    /* ===== STATS + LINKS PILL ===== */
+    .statsPillWrap{margin-top:20px;display:flex;justify-content:center;}
+    .statsPill{
+      width: min(980px, 100%);
+      border-radius:999px;
+      padding:14px 14px;
+      background: linear-gradient(180deg, var(--pillBg1), var(--pillBg2));
+      border:2px solid var(--pillBorder);
+      display:flex;align-items:stretch;justify-content:space-between;gap:10px;
+      overflow:hidden;backdrop-filter: blur(8px);
+    }
+    .stat{flex:1 1 0;text-align:center;padding:10px 10px;min-width:0;}
+    .stat:not(:last-child){border-right:1px solid rgba(255,255,255,.14);}
+    .stat .big{font-size:34px;font-weight:800;line-height:1.05;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;}
+    .stat .sub{margin-top:6px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color: rgba(255,255,255,.72);line-height:1.15;}
+    .pillLinkRow{margin-top:10px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+    .pillLink{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 14px;border-radius:999px;
+      background: rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.20);
+      font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:12px;
+      transition: transform .15s ease, filter .15s ease, background .15s ease;
+      white-space:nowrap;
+    }
+    .pillLink:hover{transform:translateY(-1px); filter:brightness(1.06); background: rgba(255,255,255,.16);}
+    .pillLink:active{transform:translateY(0); filter:brightness(1.02)}
+
+    /* ===== SECTIONS ===== */
+    section{padding:78px 0}
+    .dark{
+      background:
+        radial-gradient(1100px 700px at 30% 20%, rgba(124,240,199,.06), transparent 55%),
+        radial-gradient(900px 600px at 80% 10%, rgba(106,166,255,.09), transparent 58%),
+        linear-gradient(180deg, var(--dark1), var(--dark2) 55%, var(--dark3));
+    }
+    .white{background:#fff;color:var(--ink);}
+
+    .titleXL{
+      margin:0 0 18px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      font-weight:800;
+      font-size: clamp(20px, 3.2vw, 35px); /* было крупнее */
+      text-align:center;
+      color:inherit;
+    }
+    .titleL{
+      margin:0 0 18px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      font-weight:800;
+      font-size: clamp(30px, 3vw, 52px);
+      color:inherit;
+    }
+    .lead{margin:0;opacity:.92;font-size:18px;line-height:1.65;color:inherit;}
+
+    /* ===== ABOUT ===== */
+    .aboutSection{
+      background:
+        radial-gradient(1100px 700px at 30% 20%, rgba(124,240,199,.06), transparent 55%),
+        radial-gradient(900px 600px at 80% 10%, rgba(106,166,255,.09), transparent 58%),
+        linear-gradient(180deg, var(--dark1), var(--dark2) 55%, var(--dark3));
+      position:relative;z-index:2;
+    }
+    .aboutShell{position:relative;height:160vh;}
+    .aboutSticky{position:sticky;top:92px;padding-top:10px;z-index:3;}
+    .aboutCard{
+      position:relative;border-radius:36px;border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(900px 520px at 15% 25%, rgba(106,166,255,.12), transparent 52%),
+        radial-gradient(900px 520px at 85% 25%, rgba(124,240,199,.09), transparent 52%),
+        linear-gradient(180deg, rgba(6,16,42,.94), rgba(7,26,59,.94));
+      padding:34px 26px;
+      transform-origin: top center;
+      transform: translateY(0px) scale(1);
+      opacity:1;
+      will-change: transform, opacity;
+      z-index:20;
+    }
+    .aboutCard::after{
+      content:"";position:absolute;inset:-26px;
+      background:
+        radial-gradient(600px 320px at 30% 25%, rgba(106,166,255,.22), transparent 60%),
+        radial-gradient(520px 320px at 70% 30%, rgba(124,240,199,.16), transparent 62%),
+        radial-gradient(900px 520px at 50% 80%, rgba(255,255,255,.06), transparent 70%);
+      filter: blur(18px);
+      opacity: var(--aboutGlow, .0);
+      transition: opacity .12s linear;
+      z-index:-1;pointer-events:none;
+    }
+    .aboutTitleSmall{
+      margin:0 0 14px;
+      font-size:28px;font-weight:800;letter-spacing:.10em;text-transform:uppercase;
+      color: rgba(255,255,255,.92);
+    }
+    .aboutGrid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
+    .photo{border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background: rgba(255,255,255,.06);min-height:320px;}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .photo.right{width:92%;justify-self:end;min-height:280px;}
+    .aboutBlock{border-radius:24px;border:1px solid rgba(255,255,255,.10);background: linear-gradient(180deg, rgba(11,36,86,.22), rgba(7,26,59,.14));padding:18px 18px;}
+    .aboutBlock p{margin:0;color: rgba(255,255,255,.92);font-size:16.5px;line-height:1.7;font-weight:500;}
+    .aboutLeftCol,.aboutRightCol{display:grid;gap:14px}
+    .callouts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;}
+    .callout{border-radius:20px;padding:14px 14px;background: linear-gradient(180deg, rgba(11,36,86,.40), rgba(7,26,59,.28));border:1px solid rgba(255,255,255,.10);color: rgba(255,255,255,.92);font-size:14px;line-height:1.55;}
+
+    /* ===== NOMINATIONS ===== */
+    .cards6{display:grid;grid-template-columns:repeat(3, 1fr);gap:18px;margin-top:34px;}
+    .cardD{
+      background: linear-gradient(180deg, rgba(11,36,86,.92), rgba(7,26,59,.92));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:36px;
+      padding:26px;
+      min-height:220px;
+      position:relative;overflow:hidden;
+      box-shadow:none !important;
+      transition: transform .18s ease, filter .18s ease;
+    }
+    .cardD:hover{transform: translateY(-2px); filter: brightness(1.04);}
+    .cardD h3{margin:0 0 10px;font-size:20px;font-weight:700;}
+    .cardD p{margin:0;color: rgba(255,255,255,.88);font-size:15px;line-height:1.6;font-weight:500;}
+    .deco{
+      position:absolute;right:-22px;top:-18px;width:120px;height:120px;
+      background: radial-gradient(circle at 30% 30%, rgba(159,208,255,.85), rgba(124,240,199,.25) 45%, rgba(255,255,255,.04) 70%, transparent 72%);
+      transform: rotate(18deg);opacity:.8;border-radius:26px;pointer-events:none;
+    }
+    .centerBtn{margin-top:34px;display:flex;justify-content:center}
+    .btnWhite{
+      background:#fff;color:var(--ink);
+      padding:18px 34px;border-radius:999px;font-weight:700;letter-spacing:.04em;
+      border:0;cursor:pointer;text-transform:uppercase;
+      box-shadow:none !important;
+      transition: transform .15s ease, filter .15s ease;
+      display:inline-flex;align-items:center;justify-content:center;
+    }
+    .btnWhite:hover{transform:translateY(-1px); filter:brightness(1.03)}
+    .btnWhite:active{transform:translateY(0); filter:brightness(1.0)}
+
+    /* ===== WHAT NEEDED (tighter "быстрые действия" + prize colors for 1/2 and CTA) ===== */
+    .howtoWrap{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      align-items:start;
+    }
+    .howCard{
+      border-radius:34px;
+      padding:22px 22px;
+      background:
+        radial-gradient(700px 420px at 18% 22%, rgba(106,166,255,.18), transparent 60%),
+        radial-gradient(600px 360px at 90% 10%, rgba(124,240,199,.12), transparent 58%),
+        linear-gradient(180deg, rgba(7,26,59,.05), rgba(7,26,59,.02));
+      border:1px solid rgba(7,26,59,.12);
+      box-shadow:none !important;
+      overflow:hidden;
+    }
+    .howSteps{display:grid;gap:14px;margin-top:6px;}
+    .stepRow{
+      display:grid;
+      grid-template-columns: 62px 1fr;
+      gap:14px;
+      align-items:start;
+      padding:16px 16px;
+      border-radius:22px;
+      background: rgba(7,26,59,.04);
+      border:1px solid rgba(7,26,59,.08);
+    }
+    /* 4) цифры 1/2 делаем "призовым" цветом */
+    .stepNum{
+      width:62px;height:62px;border-radius:18px;
+      background: linear-gradient(180deg, var(--prizeGrad1), var(--prizeGrad2));
+      color:#fff;
+      display:flex;align-items:center;justify-content:center;
+      font-weight:900;font-size:24px;letter-spacing:.02em;
+      box-shadow:none !important;
+    }
+    .stepTxt b{display:block;font-size:18px;font-weight:800;color:var(--ink);margin-bottom:6px}
+    .stepTxt span{display:block;font-size:15px;line-height:1.6;color: rgba(7,26,59,.82);font-weight:500}
+
+    /* 3) делаем "быстрые действия" компактнее */
+    .howAside{
+      border-radius:26px;
+      padding:16px 16px;
+      background: linear-gradient(180deg, rgba(7,26,59,.06), rgba(7,26,59,.03));
+      border:1px solid rgba(7,26,59,.10);
+      display:grid;
+      gap:12px;
+      align-content:start; /* убираем лишнее пустое пространство */
+    }
+    .howAsideTop b{
+      display:block;font-weight:900;letter-spacing:.04em;text-transform:uppercase;
+      color: var(--ink);font-size:13px;opacity:.9;margin-bottom:6px;
+    }
+    .howAsideTop p{
+      margin:0;color: rgba(7,26,59,.84);line-height:1.6;font-weight:500;font-size:14.5px;
+    }
+    .howAsideBtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px;}
+
+    .pillBtn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 14px;border-radius:999px;
+      border:1px solid rgba(7,26,59,.12);
+      background:#fff;color:var(--ink);
+      font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:11px;
+      transition: transform .15s ease, filter .15s ease;
+      white-space:nowrap;
+    }
+    .pillBtn:hover{transform:translateY(-1px); filter:brightness(1.02)}
+    .pillBtn:active{transform:translateY(0); filter:brightness(1.0)}
+
+    /* 4) кнопка "подать заявку" в howto — как призовые карточки */
+    .pillBtn.primary{
+      background: linear-gradient(180deg, var(--prizeGrad1), var(--prizeGrad2));
+      color:#fff;
+      border-color: transparent;
+    }
+    .pillBtn.primary:hover{filter:brightness(1.08)}
+    .pillBtn.primary:active{filter:brightness(1.02)}
+
+    /* ===== PRIZES ===== */
+    .prizeGrid{display:grid;grid-template-columns:repeat(3, 1fr);gap:22px;margin-top:26px;align-items:stretch;}
+    .prizeCard{
+      background: linear-gradient(180deg, var(--prizeGrad1), var(--prizeGrad2));
+      border-radius:42px;
+      padding:30px 30px 34px;
+      color:#fff;
+      min-height:420px;
+      position:relative;overflow:hidden;
+      box-shadow:none !important;
+    }
+    .prizeCard h3{
+      margin:0 0 16px;text-transform:uppercase;letter-spacing:.04em;
+      font-weight:800;font-size:26px;text-align:center;
+    }
+    .prizeCard ul{margin:0;padding-left:18px;line-height:1.65;font-weight:500}
+
+    .trophyImg{position:absolute;left:18px;bottom:10px;object-fit:contain;opacity:.95;pointer-events:none;}
+    .trophy1{width:120px;height:120px;}
+    .trophy2{width:104px;height:104px;}
+    .trophy3{width:90px;height:90px;}
+
+    /* ===== UNIFIED DARK ZONE (Stages + Apply) ===== */
+    .darkZone{
+      position:relative;
+      background: linear-gradient(180deg, var(--deepBlue2), var(--deepBlue));
+      overflow:hidden;
+    }
+    .darkZone .zoneCanvas{
+      position:absolute;inset:0;width:100%;height:100%;
+      z-index:0;pointer-events:none;
+      opacity:.65;
+      mix-blend-mode: screen;
+      filter:none !important; /* 1) никакого размытия */
+    }
+    .darkZone .zoneInner{position:relative;z-index:1;}
+    .darkZone section{background:transparent !important;padding:78px 0;}
+    .zoneFade{
+      height:18px;
+      background: linear-gradient(180deg, rgba(0,0,0,0), rgba(255,255,255,.05), rgba(0,0,0,0));
+      opacity:.75;
+    }
+
+    /* ===== TIMELINE ===== */
+    .timelineWrap{margin-top:28px;}
+    .timeline{
+      display:grid;
+      grid-template-columns: 1fr 80px 1fr;
+      row-gap:34px;
+      column-gap:18px;
+      align-items:center;
+      position:relative;
+    }
+    .timeline::before{display:none;} /* без палки */
+    .tDate{font-weight:800;font-size:20px;opacity:.95;text-align:right;line-height:1.25;}
+    .tNode{display:flex;align-items:center;justify-content:center;z-index:2;}
+    .tNode img{width:46px;height:46px;object-fit:contain;display:block;transition: transform .45s ease;transform-origin:center;}
+    .tNode:hover img{transform: rotate(360deg);}
+    .tText h4{margin:0 0 6px;font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;}
+    .tText p{margin:0;color:rgba(255,255,255,.88);font-size:18px;line-height:1.6;font-weight:500}
+
+    /* ===== FORM ===== */
+    .formWrap{max-width:780px;margin:24px auto 0;padding:8px 0 0;}
+    .field{margin:18px 0;}
+    .label{display:block;margin:0 0 10px;color: rgba(255,255,255,.88);font-weight:600;}
+    input, textarea, select{
+      width:100%;padding:18px 20px;border-radius:999px;border:0;outline:none;
+      font-size:16px;background:#fff;color:var(--ink);
+      font-family:var(--font);font-weight:500;
+    }
+    textarea{border-radius:26px;min-height:140px;resize:vertical;padding-top:16px;}
+    .hint{color: rgba(255,255,255,.7);font-size:14px;margin-top:8px;font-weight:500;}
+    .submitRow{display:flex;justify-content:center;margin-top:26px;}
+    .submitBtn{
+      background:#fff;color:var(--ink);
+      padding:18px 38px;border-radius:999px;border:0;cursor:pointer;
+      font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+      box-shadow:none !important;transition: transform .15s ease, filter .15s ease;
+    }
+    .submitBtn:hover{transform:translateY(-1px); filter:brightness(1.03)}
+    .submitBtn:active{transform:translateY(0); filter:brightness(1.0)}
+    .ok{display:none;margin-top:16px;padding:14px 16px;border-radius:18px;background: rgba(124,240,199,.14);border:1px solid rgba(124,240,199,.22);color: rgba(255,255,255,.95);font-weight:600;}
+    .err{display:none;margin-top:10px;color:#ffb3b3;font-weight:700;}
+
+    /* ===== RESULTS / MEDIA ===== */
+    .mediaGrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;align-items:start;}
+    .yt{border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,.06);background:#000;aspect-ratio:16/9;box-shadow:none !important;}
+    .yt iframe{width:100%;height:100%;border:0}
+    .gallery{display:grid;grid-template-columns:repeat(3, 1fr);gap:12px;}
+    .thumb{border-radius:18px;overflow:hidden;border:1px solid rgba(0,0,0,.08);background:#f3f6ff;aspect-ratio:4/3;box-shadow:none !important;}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .morePhotosRow{margin-top:18px;display:flex;justify-content:center;}
+
+    /* ===== ORGANIZERS marquee ===== */
+    .orgMarqueeFull{
+      width:100%;
+      border-top:0;
+      border-bottom:1px solid rgba(255,255,255,.12);
+      background: transparent;
+      overflow:hidden;
+      padding:18px 0 18px;
+      position:relative;
+      margin-top:22px;
+    }
+    .orgMarqueeFull::before,
+    .orgMarqueeFull::after{
+      content:"";position:absolute;top:0;bottom:0;width:120px;
+      pointer-events:none;z-index:2;
+    }
+    .orgMarqueeFull::before{left:0;background: linear-gradient(90deg, rgba(7,26,59,1), rgba(7,26,59,0));}
+    .orgMarqueeFull::after{right:0;background: linear-gradient(270deg, rgba(7,26,59,1), rgba(7,26,59,0));}
+    .orgTrack{
+      display:flex;gap:38px;width:max-content;align-items:center;
+      animation: marquee 34s linear infinite;
+      padding-left:120px;
+      will-change: transform;
+    }
+    .orgMarqueeFull:hover .orgTrack{animation-play-state: paused;}
+    @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+    .orgLogoLink{display:inline-flex;align-items:center;justify-content:center;padding:8px 6px;transition: transform .15s ease, filter .15s ease;}
+    .orgLogoLink:hover{transform: translateY(-2px); filter: brightness(1.06);}
+    .orgLogoLink:active{transform: translateY(0); filter: brightness(1.02);}
+    .orgLogo{height:64px;width:auto;max-width:260px;object-fit:contain;opacity:.98;display:block;}
+    .orgLogo.placeholder{opacity:.75;cursor:default;pointer-events:none;}
+
+    /* ===== CONTACTS ===== */
+    .contactsWrap{margin-top:42px;}
+    .contactsGrid{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;align-items:start;}
+    .contactTitle{margin:0 0 18px;text-transform:uppercase;letter-spacing:.04em;font-weight:800;font-size: clamp(20px, 3vw, 35px);}
+    .contactList{display:grid;gap:14px;}
+    .contactRow{display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:center;}
+    .contactIcon{width:46px;height:46px;object-fit:contain;display:block;transition: transform .45s ease;transform-origin:center;}
+    .contactRow:hover .contactIcon{transform: rotate(360deg);}
+    .contactText{
+      color: rgba(255,255,255,.92);
+      font-size:20px;font-weight:500;line-height:1.25;
+      white-space: nowrap;word-break: keep-all;font-variant-numeric: tabular-nums;
+    }
+    .map{margin-top:18px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.10);background:#111;aspect-ratio:16/8;width:100%;box-shadow:none !important;}
+    .map iframe{width:100%;height:100%;border:0;filter: grayscale(1) contrast(1.05) brightness(.95)}
+    .footerLinks{margin-top:64px;}
+    .footerLinks a, .footerLinks span{display:block;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin:14px 0;opacity:.92;}
+    .footerLinks a:hover{opacity:1}
+    .footerLinks span{opacity:.65}
+
+    /* ===== VIDEO MODAL ===== */
+    .modalOverlay{position:fixed;inset:0;background: rgba(0,0,0,.64);display:none;align-items:center;justify-content:center;z-index:2000;padding:24px;}
+    .modalOverlay.open{display:flex;}
+    .modalCard{width:min(980px, 100%);background: rgba(7,26,59,.92);border:1px solid rgba(255,255,255,.18);border-radius:22px;overflow:hidden;box-shadow:none !important;}
+    .modalTop{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;color: rgba(255,255,255,.92);font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:13px;background: rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.12);}
+    .closeBtn{border:0;background: rgba(255,255,255,.12);color:#fff;font-weight:900;cursor:pointer;border-radius:12px;padding:8px 10px;transition: filter .15s ease, transform .15s ease;}
+    .closeBtn:hover{filter:brightness(1.10); transform:translateY(-1px)}
+    .closeBtn:active{transform:translateY(0)}
+    .modalVideo{width:100%;aspect-ratio:16/9;background:#000;}
+    .modalVideo iframe{width:100%;height:100%;border:0}
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1050px){
+      .statsPill{border-radius:28px;flex-direction:column;}
+      .stat:not(:last-child){border-right:0; border-bottom:1px solid rgba(255,255,255,.14)}
+      .aboutGrid{grid-template-columns:1fr}
+      .photo.right{width:100%}
+      .callouts{grid-template-columns:1fr}
+      .cards6{grid-template-columns:repeat(2,1fr)}
+      .mediaGrid{grid-template-columns:1fr}
+      .contactsGrid{grid-template-columns:1fr}
+      .timeline{grid-template-columns:1fr 70px 1fr}
+      .aboutShell{height:auto}
+      .aboutSticky{position:relative; top:auto}
+      .aboutCard{transform:none !important; opacity:1 !important;}
+      .hero{opacity:1 !important; filter:none !important;}
+      .aboutCard::after{opacity:.55;}
+      .howtoWrap{grid-template-columns:1fr}
+      .orgTrack{animation-duration:28s;}
+      .orgLogo{height:56px;max-width:220px}
+    }
+    @media (max-width: 820px){
+      .links{display:none}
+      .burger{display:inline-flex;gap:10px;align-items:center}
+      .navBtn:not(.burger){display:none}
+      .cards6{grid-template-columns:1fr}
+      .prizeGrid{grid-template-columns:1fr}
+      .tDate{text-align:left}
+      .timeline{grid-template-columns:1fr 64px 1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .contactText{font-size:18px}
+      .cta{min-width:240px}
+      .orgTrack{gap:26px}
+      .orgLogo{height:52px;max-width:200px}
+    }
+    @media (max-width: 520px){
+      .nav{height:auto;padding:14px 0}
+      section{padding:56px 0}
+      .darkZone section{padding:56px 0}
+      .cta{width:100%}
+      .watchBtn{width:100%;justify-content:center}
+      .gallery{grid-template-columns:1fr}
+      .contactText{font-size:16px}
+      .stat .big{font-size:32px}
+      .brandLogoImg{height:38px}
+      .orgMarqueeFull::before,.orgMarqueeFull::after{width:80px}
+      .orgTrack{padding-left:80px; gap:18px; animation-duration:22s;}
+      .orgLogo{height:44px;max-width:160px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="navWrap">
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="На главную">
+          <img class="brandLogoImg" src="assets/site-logo.png" alt="Логотип сайта" />
+        </a>
+
+        <nav class="links" aria-label="Навигация">
+          <a href="#about">О КОНКУРСЕ</a>
+          <a href="#stages">ЭТАПЫ</a>
+          <a href="#prizes">ПРИЗЫ</a>
+          <a href="#results">КАК ЭТО БЫЛО</a>
+          <a href="#org">ОРГАНИЗАТОРЫ</a>
+          <span class="placeholder">ИТОГИ (СКОРО)</span>
+          <a href="#contacts">КОНТАКТЫ</a>
+        </nav>
+
+        <div class="spacer"></div>
+
+        <a class="navBtn" href="#apply">ПОДАТЬ ЗАЯВКУ</a>
+        <button class="navBtn burger" id="burger" type="button" aria-label="Меню">☰ МЕНЮ</button>
+      </div>
+
+      <div class="mobileMenu" id="mobileMenu">
+        <a href="#about">О КОНКУРСЕ</a>
+        <a href="#stages">ЭТАПЫ</a>
+        <a href="#prizes">ПРИЗЫ</a>
+        <a href="#results">КАК ЭТО БЫЛО</a>
+        <a href="#org">ОРГАНИЗАТОРЫ</a>
+        <span>ИТОГИ (СКОРО)</span>
+        <a href="#contacts">КОНТАКТЫ</a>
+        <a href="#apply">ПОДАТЬ ЗАЯВКУ</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="heroInner">
+        <div class="dateLine">27 АПРЕЛЬ 2026 — 31 ИЮНЬ 2026</div>
+
+        <h1 class="heroTitle">
+          <span class="line">ЛУЧШАЯ</span>
+          <span class="line">ИМИТАЦИОННАЯ МОДЕЛЬ</span>
+          <span class="line line3">РОССИИ 2026</span>
+        </h1>
+
+        <div class="heroActions">
+          <a class="cta" href="#apply">ПОДАТЬ ЗАЯВКУ</a>
+          <button class="watchBtn" id="openHeroVideo" type="button">
+            <span class="playIcon" aria-hidden="true"></span>
+            КАК ЭТО БЫЛО В 2023
+          </button>
+        </div>
+
+        <div class="statsPillWrap">
+          <div style="width:min(980px,100%);">
+            <div class="statsPill" role="group" aria-label="Статистика конкурса">
+              <div class="stat">
+                <div class="big">15+</div>
+                <div class="sub">ГОРОДОВ И РЕГИОНОВ РФ</div>
+              </div>
+              <div class="stat">
+                <div class="big">7000+</div>
+                <div class="sub">УНИКАЛЬНЫХ ПОЛЬЗОВАТЕЛЕЙ</div>
+              </div>
+              <div class="stat">
+                <div class="big">12</div>
+                <div class="sub">СТРАН МИРА</div>
+              </div>
+            </div>
+
+            <div class="pillLinkRow" aria-label="Быстрые ссылки">
+              <a class="pillLink" href="#prizes">ПРИЗОВОЙ ФОНД 300 000 ₽</a>
+              <a class="pillLink" href="#nominations">6 НОМИНАЦИЙ</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="heroFootnote">
+          При содействии рабочей группы Государственной Думы и информационной поддержке Администрации Президента РФ
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="aboutSection" id="about">
+    <div class="container">
+      <div class="aboutShell" id="aboutShell">
+        <div class="aboutSticky">
+          <div class="aboutCard" id="aboutCard">
+            <div class="aboutTitleSmall">О конкурсе</div>
+
+            <div class="aboutGrid">
+              <div class="aboutLeftCol">
+                <div class="photo">
+                  <img src="assets/about-1.jpg" alt="Фото с мероприятия" onerror="this.style.display='none';this.parentElement.style.minHeight='320px';" />
+                </div>
+
+                <div class="aboutBlock">
+                  <p>
+                    Цель конкурса — разработка компьютерных и математических моделей социально-экономических систем.
+                    Это перспективный тренд цифровых технологий: мониторинг, анализ, планирование и прогнозирование процессов.
+                  </p>
+                </div>
+
+                <div class="aboutBlock">
+                  <p>
+                    Модельные комплексы на базе математических методов и современных программных решений помогают выработать единую стратегию развития,
+                    увязав отраслевые программы и национальные проекты по ресурсам, срокам и механизмам реализации.
+                  </p>
+                </div>
+              </div>
+
+              <div class="aboutRightCol">
+                <div class="aboutBlock">
+                  <p>
+                    В условиях внешнего давления и негативного информационного фона государственное планирование стало особенно актуальным.
+                    В начале 2022 года ряд международных организаций представили прогнозы с резко негативной тональностью по отношению к России.
+                  </p>
+                </div>
+
+                <div class="photo right">
+                  <img src="assets/about-2.jpg" alt="Фото награждения" onerror="this.style.display='none';this.parentElement.style.minHeight='280px';" />
+                </div>
+
+                <div class="aboutBlock">
+                  <p>
+                    Участие в конкурсе помогает выявить лучшие разработки, познакомиться с коллегами на юбилейной конференции
+                    и сформировать предложения для практического применения и повышения эффективности управленческих решений.
+                  </p>
+                </div>
+
+                <div class="callouts">
+                  <div class="callout">
+                    <b style="font-weight:700">Фокус:</b> научно-доказательная база и многопараметрические оценки социально-экономического развития России.
+                  </div>
+                  <div class="callout">
+                    <b style="font-weight:700">Результат:</b> круг лидирующих коллективов и пакет предложений для практического применения в управлении.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /aboutCard -->
+        </div><!-- /aboutSticky -->
+      </div><!-- /aboutShell -->
+    </div>
+  </section>
+
+  <!-- NOMINATIONS -->
+  <section class="dark" id="nominations">
+    <div class="container">
+      <h2 class="titleXL">НОМИНАЦИИ</h2>
+
+      <div class="cards6">
+        <div class="cardD"><div class="deco" aria-hidden="true"></div>
+          <h3>Федеральный уровень</h3>
+          <p>Лучшая математическая и/или компьютерная модель для решения задач на федеральном уровне.</p>
+        </div>
+        <div class="cardD"><div class="deco" aria-hidden="true"></div>
+          <h3>Региональный уровень</h3>
+          <p>Лучшая математическая и/или компьютерная модель для решения задач на региональном уровне.</p>
+        </div>
+        <div class="cardD"><div class="deco" aria-hidden="true"></div>
+          <h3>Отраслевой уровень</h3>
+          <p>Лучшая математическая и/или компьютерная модель для решения задач на отраслевом уровне.</p>
+        </div>
+        <div class="cardD"><div class="deco" aria-hidden="true"></div>
+          <h3>Государственное управление</h3>
+          <p>Лучшая имитационная модель для решения социально-экономических задач государственного управления.</p>
+        </div>
+        <div class="cardD"><div class="deco" aria-hidden="true"></div>
+          <h3>Номинация 5</h3>
+          <p>Описание номинации 5 (замени на официальный текст).</p>
+        </div>
+        <div class="cardD"><div class="deco" aria-hidden="true"></div>
+          <h3>Номинация 6</h3>
+          <p>Описание номинации 6 (замени на официальный текст).</p>
+        </div>
+      </div>
+
+      <div class="centerBtn">
+        <a class="btnWhite" href="https://disk.yandex.ru/i/6beOxVPNmvb2Dw" target="_blank" rel="noreferrer">
+          ПОЛОЖЕНИЕ О КОНКУРСЕ
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT NEEDED -->
+  <section class="white" id="howto">
+    <div class="container">
+      <h2 class="titleL">ЧТО НУЖНО ДЛЯ УЧАСТИЯ В КОНКУРСЕ?</h2>
+
+      <div class="howtoWrap">
+        <div class="howCard">
+          <div class="howSteps">
+            <div class="stepRow">
+              <div class="stepNum">1</div>
+              <div class="stepTxt">
+                <b>Заявка от участника конкурса</b>
+                <span>Заполните форму ниже и проверьте корректность контактных данных.</span>
+              </div>
+            </div>
+
+            <div class="stepRow">
+              <div class="stepNum">2</div>
+              <div class="stepTxt">
+                <b>Архив с материалами и подтверждением авторских прав</b>
+                <span>Подготовьте единый архив (.zip/.rar/.7z) и прикрепите его при отправке.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="howAside">
+          <div class="howAsideTop">
+            <b>Быстрые действия</b>
+            <p>Документы → затем подача заявки.</p>
+          </div>
+
+          <div class="howAsideBtns">
+            <a class="pillBtn" href="https://disk.yandex.ru/i/6beOxVPNmvb2Dw" target="_blank" rel="noreferrer">ПОЛОЖЕНИЕ</a>
+            <a class="pillBtn" href="https://disk.yandex.ru/i/6beOxVPNmvb2Dw" target="_blank" rel="noreferrer">СКАЧАТЬ</a>
+            <a class="pillBtn primary" href="#apply">ПОДАТЬ ЗАЯВКУ</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIZES -->
+  <section class="white" id="prizes">
+    <div class="container">
+      <h2 class="titleL">ПРИЗОВОЙ ФОНД</h2>
+
+      <div class="prizeGrid">
+        <div class="prizeCard">
+          <img class="trophyImg trophy1" src="assets/trophy-1.png" alt="" onerror="this.style.display='none';" />
+          <h3>ПОБЕДИТЕЛЯМ</h3>
+          <ul>
+            <li>60 000 ₽</li>
+            <li>Именные дипломы об участии</li>
+            <li>Выступление на международной конференции</li>
+            <li>Публикация лучших работ</li>
+          </ul>
+        </div>
+
+        <div class="prizeCard">
+          <img class="trophyImg trophy2" src="assets/trophy-2.png" alt="" onerror="this.style.display='none';" />
+          <h3>ЛАУРЕАТАМ</h3>
+          <ul>
+            <li>Именные дипломы об участии</li>
+            <li>Выступление на международной конференции</li>
+            <li>Включение лучших моделей в учебно-методические материалы</li>
+          </ul>
+        </div>
+
+        <div class="prizeCard">
+          <img class="trophyImg trophy3" src="assets/trophy-3.png" alt="" onerror="this.style.display='none';" />
+          <h3>УЧАСТНИКАМ</h3>
+          <ul>
+            <li>Сертификаты об участии</li>
+            <li>Приглашение на международную конференцию</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK ZONE: STAGES + APPLY + CODE RAIN -->
+  <div class="darkZone" id="darkZone">
+    <canvas class="zoneCanvas" id="codeRain" aria-hidden="true"></canvas>
+
+    <div class="zoneInner">
+      <!-- STAGES -->
+      <section id="stages">
+        <div class="container">
+          <h2 class="titleXL">ЭТАПЫ ПРОВЕДЕНИЯ КОНКУРСА</h2>
+
+          <div class="timelineWrap">
+            <div class="timeline">
+              <div class="tDate">27 апреля — 31 июля 2026</div>
+              <div class="tNode"><img src="assets/node-1.png" alt="" onerror="this.style.display='none';" /></div>
+              <div class="tText">
+                <h4>Сбор заявок</h4>
+                <p>Приём заявок и материалов участников</p>
+              </div>
+
+              <div class="tDate">3 августа — 25 сентября 2026</div>
+              <div class="tNode"><img src="assets/node-2.png" alt="" onerror="this.style.display='none';" /></div>
+              <div class="tText">
+                <h4>Экспертиза</h4>
+                <p>Оценка и отбор работ экспертной комиссией</p>
+              </div>
+
+              <div class="tDate">Конец сентября 2026</div>
+              <div class="tNode"><img src="assets/node-3.png" alt="" onerror="this.style.display='none';" /></div>
+              <div class="tText">
+                <h4>Оглашение результатов</h4>
+                <p>Объявление на конференции «Искусственные общества»</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <div class="zoneFade" aria-hidden="true"></div> -->
+
+      <!-- APPLY FORM -->
+      <section id="apply">
+        <div class="container">
+          <h2 class="titleXL">ПОДАЙТЕ ЗАЯВКУ НА УЧАСТИЕ В КОНКУРСЕ</h2>
+          <p class="lead" style="text-align:center;color:rgba(255,255,255,.85);max-width:900px;margin:0 auto;">
+            Поля, помеченные звёздочкой, обязательны для заполнения
+          </p>
+
+          <div class="formWrap">
+            <form id="applyForm" enctype="multipart/form-data">
+              <div class="field">
+                <label class="label" for="email">Ваш e-mail *</label>
+                <input id="email" name="email" type="email" placeholder="you@mail.com" required />
+              </div>
+
+              <div class="field">
+                <label class="label" for="fio">Ваше ФИО *</label>
+                <input id="fio" name="fio" type="text" placeholder="Иванов Иван Иванович" required />
+              </div>
+
+              <div class="field">
+                <label class="label" for="phone">Ваш телефон *</label>
+                <input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required />
+              </div>
+
+              <div class="field">
+                <label class="label" for="workname">Название вашей работы *</label>
+                <textarea id="workname" name="workname" placeholder="Короткое название проекта" required></textarea>
+              </div>
+
+              <div class="field">
+                <label class="label" for="nom">Выберите номинацию *</label>
+                <select id="nom" name="nomination" required>
+                  <option value="">— выберите —</option>
+                  <option>Федеральный уровень</option>
+                  <option>Региональный уровень</option>
+                  <option>Отраслевой уровень</option>
+                  <option>Государственное управление</option>
+                  <option>Номинация 5</option>
+                  <option>Номинация 6</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="label" for="files">Загрузите архив с материалами *</label>
+                <input id="files" name="files" type="file" accept=".zip,.rar,.7z,.pdf" required />
+                <div class="hint">Поддерживаются: .zip / .rar / .7z / .pdf</div>
+              </div>
+
+              <div class="err" id="formErr">Проверьте обязательные поля и файл.</div>
+
+              <div class="submitRow">
+                <button class="submitBtn" type="submit">ОТПРАВИТЬ</button>
+              </div>
+
+              <div class="ok" id="formOk">✅ Заявка сохранена (демо). Подключим реальную отправку позже.</div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- RESULTS / MEDIA -->
+  <section class="white" id="results">
+    <div class="container">
+      <h2 class="titleL">ЦЕРЕМОНИЯ НАГРАЖДЕНИЯ 2023</h2>
+      <p class="lead" style="max-width:980px;">
+        25 сентября 2023 года в Москве на площадке ЦЭМИ РАН состоялась 5-я юбилейная международная конференция
+        «Искусственные общества и информационные технологии». В рамках конференции были подведены итоги конкурса
+        и состоялась церемония награждения.
+      </p>
+
+      <div class="mediaGrid">
+        <div class="yt" aria-label="Видео Rutube">
+          <iframe
+            src="https://rutube.ru/play/embed/688485aed038c459e40ca7fe2c782963"
+            title="Rutube video"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+
+        <div>
+          <div class="gallery">
+            <div class="thumb"><img src="assets/g1.jpg" alt="Фото 1" onerror="this.style.display='none';this.parentElement.style.background='#eef2ff';" /></div>
+            <div class="thumb"><img src="assets/g2.jpg" alt="Фото 2" onerror="this.style.display='none';this.parentElement.style.background='#eef2ff';" /></div>
+            <div class="thumb"><img src="assets/g3.jpg" alt="Фото 3" onerror="this.style.display='none';this.parentElement.style.background='#eef2ff';" /></div>
+            <div class="thumb"><img src="assets/g4.jpg" alt="Фото 4" onerror="this.style.display='none';this.parentElement.style.background='#eef2ff';" /></div>
+            <div class="thumb"><img src="assets/g5.jpg" alt="Фото 5" onerror="this.style.display='none';this.parentElement.style.background='#eef2ff';" /></div>
+            <div class="thumb"><img src="assets/g6.jpg" alt="Фото 6" onerror="this.style.display='none';this.parentElement.style.background='#eef2ff';" /></div>
+          </div>
+
+          <div class="morePhotosRow">
+            <a class="btnWhite" href="#" onclick="event.preventDefault();">ЕЩЁ ФОТО</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORGANIZERS -->
+  <section class="dark" id="org">
+    <div class="container">
+      <h2 class="titleXL">ОРГАНИЗАТОРЫ И ПАРТНЕРЫ</h2>
+    </div>
+
+    <div class="orgMarqueeFull" aria-label="Бегущая лента логотипов">
+      <div class="orgTrack" id="orgTrack">
+        <!-- set 1 -->
+        <a class="orgLogoLink" href="https://anspa.ru/" target="_blank" rel="noreferrer">
+          <img class="orgLogo" src="assets/logo-1.png" alt="ANSPA" onerror="this.style.display='none';" />
+        </a>
+        <a class="orgLogoLink" href="https://new.ras.ru/" target="_blank" rel="noreferrer">
+          <img class="orgLogo" src="assets/logo-2.png" alt="Российская академия наук" onerror="this.style.display='none';" />
+        </a>
+        <a class="orgLogoLink" href="https://minobrnauki.gov.ru/" target="_blank" rel="noreferrer">
+          <img class="orgLogo" src="assets/logo-3.png" alt="Минобрнауки России" onerror="this.style.display='none';" />
+        </a>
+        <a class="orgLogoLink" href="http://www.cemi.rssi.ru/" target="_blank" rel="noreferrer">
+          <img class="orgLogo" src="assets/logo-4.png" alt="ЦЭМИ РАН" onerror="this.style.display='none';" />
+        </a>
+        <a class="orgLogoLink" href="http://www.cemi.rssi.ru/" target="_blank" rel="noreferrer">
+          <img class="orgLogo" src="assets/logo-5.png" alt="ЦЭМИ РАН" onerror="this.style.display='none';" />
+        </a>
+        <span class="orgLogoLink" aria-label="Логотип 6 (ссылка будет позже)">
+          <img class="orgLogo placeholder" src="assets/logo-6.png" alt="Логотип 6" onerror="this.style.display='none';" />
+        </span>
+
+        <!-- set 2 (duplicate) -->
+        <a class="orgLogoLink" href="https://anspa.ru/" target="_blank" rel="noreferrer">
+          <img class="orgLogo" src="assets/logo-1.png" alt="ANSPA" />
+        </a>
+        <a class="orgLogoLink" href="https://new.ras.ru/" target="_blank" rel="noreferrer">
+          <img class="orgLogo" src="assets/logo-2.png" alt="Российская академия наук" />
+        </a>
+        <a class="orgLogoLink" href="https://minobrnauki.gov.ru/" target="_blank" rel="noreferrer">
+          <img class="orgLogo" src="assets/logo-3.png" alt="Минобрнауки России" />
+        </a>
+        <a class="orgLogoLink" href="http://www.cemi.rssi.ru/" target="_blank" rel="noreferrer">
+          <img class="orgLogo" src="assets/logo-4.png" alt="ЦЭМИ РАН" />
+        </a>
+        <a class="orgLogoLink" href="http://www.cemi.rssi.ru/" target="_blank" rel="noreferrer">
+          <img class="orgLogo" src="assets/logo-5.png" alt="ЦЭМИ РАН" />
+        </a>
+        <span class="orgLogoLink" aria-label="Логотип 6 (ссылка будет позже)">
+          <img class="orgLogo placeholder" src="assets/logo-6.png" alt="Логотип 6" />
+        </span>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- CONTACTS -->
+      <div class="contactsWrap" id="contacts">
+        <div class="contactsGrid">
+          <div>
+            <h3 class="contactTitle">НАШИ КОНТАКТЫ</h3>
+
+            <div class="contactList">
+              <div class="contactRow">
+                <img class="contactIcon" src="assets/icon-phone.png" alt="" onerror="this.style.display='none';" />
+                <div class="contactText">+7 499 129 38 22</div>
+              </div>
+
+              <div class="contactRow">
+                <img class="contactIcon" src="assets/icon-mail.png" alt="" onerror="this.style.display='none';" />
+                <div class="contactText">governmentmodel2023@yandex.ru</div>
+              </div>
+
+              <div class="contactRow">
+                <img class="contactIcon" src="assets/icon-pin.png" alt="" onerror="this.style.display='none';" />
+                <div class="contactText">Москва, Нахимовский проспект, 47</div>
+              </div>
+            </div>
+
+            <div class="map" aria-label="Карта">
+              <iframe
+                src="https://www.google.com/maps?q=Москва,%20Нахимовский%20проспект%2047&output=embed"
+                loading="lazy"></iframe>
+            </div>
+          </div>
+
+          <div class="footerLinks">
+            <a href="#top">ГЛАВНАЯ</a>
+            <a href="#about">О КОНКУРСЕ</a>
+            <a href="#nominations">НОМИНАЦИИ</a>
+            <a href="#prizes">ПРИЗЫ</a>
+            <a href="#stages">ЭТАПЫ КОНКУРСА</a>
+            <a href="#results">КАК ЭТО БЫЛО</a>
+            <a href="#apply">ПОДАТЬ ЗАЯВКУ</a>
+            <span>ИТОГИ (СКОРО)</span>
+          </div>
+        </div>
+
+        <div style="margin-top:34px;color:rgba(255,255,255,.7);font-size:13px;font-weight:500">
+          © <span id="year"></span> Конкурс. Все права защищены.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO MODAL -->
+  <div class="modalOverlay" id="videoModal" aria-hidden="true">
+    <div class="modalCard" role="dialog" aria-modal="true" aria-label="Видео">
+      <div class="modalTop">
+        <span>КАК ЭТО БЫЛО В 2023</span>
+        <button class="closeBtn" id="closeVideoModal" type="button" aria-label="Закрыть">✕</button>
+      </div>
+      <div class="modalVideo">
+        <iframe
+          id="modalIframe"
+          src=""
+          title="Rutube video"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burger?.addEventListener('click', () => {
+      const isOpen = mobileMenu.style.display === 'block';
+      mobileMenu.style.display = isOpen ? 'none' : 'block';
+    });
+    mobileMenu?.querySelectorAll('a')?.forEach(a => a.addEventListener('click', () => {
+      mobileMenu.style.display = 'none';
+    }));
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // DEMO submit
+   // REAL submit -> Telegram (через backend)
+  const form = document.getElementById('applyForm');
+  const ok = document.getElementById('formOk');
+  const err = document.getElementById('formErr');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    err.style.display = 'none';
+    ok.style.display = 'none';
+
+    const fd = new FormData(form);
+
+    // простая проверка обязательных полей
+    const required = ['email','fio','phone','workname','nomination','files'];
+    const missing = required.some(k => {
+      const v = fd.get(k);
+      if (k === 'files') return !(v && v.name);
+      return !String(v || '').trim();
+    });
+    if (missing) { err.style.display = 'block'; return; }
+
+    // сюда укажи адрес своего backend
+    // локально: http://localhost:3001/api/apply
+    // на проде: https://your-domain.com/api/apply
+    // const API_URL = "http://localhost:3001/api/apply";
+    https://your-backend.onrender.com/api/apply
+
+    try {
+      const res = await fetch(API_URL, {
+        method: "POST",
+        body: fd
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || "send_failed");
+
+      ok.textContent = "✅ Заявка отправлена. Мы свяжемся с вами при необходимости.";
+      ok.style.display = 'block';
+      form.reset();
+    } catch (e) {
+      err.textContent = "❌ Не удалось отправить заявку. Попробуйте ещё раз чуть позже.";
+      err.style.display = 'block';
+    }
+  });
+
+    // Hero video modal
+    const openHeroVideo = document.getElementById('openHeroVideo');
+    const videoModal = document.getElementById('videoModal');
+    const closeVideoModal = document.getElementById('closeVideoModal');
+    const modalIframe = document.getElementById('modalIframe');
+    function openModal(){
+      modalIframe.src = "https://rutube.ru/play/embed/688485aed038c459e40ca7fe2c782963?autoplay=1";
+      videoModal.classList.add('open');
+      videoModal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      videoModal.classList.remove('open');
+      videoModal.setAttribute('aria-hidden','true');
+      modalIframe.src = "";
+      document.body.style.overflow = '';
+    }
+    openHeroVideo?.addEventListener('click', openModal);
+    closeVideoModal?.addEventListener('click', closeModal);
+    videoModal?.addEventListener('click', (e) => { if (e.target === videoModal) closeModal(); });
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && videoModal.classList.contains('open')) closeModal();
+    });
+
+    // About overlay
+    const aboutShell = document.getElementById('aboutShell');
+    const aboutCard  = document.getElementById('aboutCard');
+    const heroEl     = document.querySelector('.hero');
+    const clamp = (n,a,b)=>Math.max(a,Math.min(b,n));
+    function updateAboutCardOverlay(){
+      if (!aboutShell || !aboutCard || !heroEl) return;
+      if (window.matchMedia('(max-width: 1050px)').matches) return;
+      const rect = aboutShell.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const start = vh * 0.95;
+      const end   = vh * 0.18;
+      const t = clamp((start - rect.top) / (start - end), 0, 1);
+      const y = 120 - t * 120;
+      const scale = 0.94 + t * 0.06;
+      const glow = 0.00 + t * 0.85;
+      aboutCard.style.transform = `translateY(${y.toFixed(1)}px) scale(${scale.toFixed(3)})`;
+      aboutCard.style.setProperty('--aboutGlow', glow.toFixed(3));
+      const heroOpacity = 1 - (t * 0.85);
+      const heroBlur = (t * 2.2);
+      heroEl.style.setProperty('--heroOpacity', heroOpacity.toFixed(3));
+      heroEl.style.setProperty('--heroBlur', `${heroBlur.toFixed(2)}px`);
+    }
+    updateAboutCardOverlay();
+    window.addEventListener('scroll', updateAboutCardOverlay, {passive:true});
+    window.addEventListener('resize', updateAboutCardOverlay);
+
+    // ===== Code Rain (NO BLUR) =====
+    (function initCodeRain(){
+      const canvas = document.getElementById('codeRain');
+      const zone = document.getElementById('darkZone');
+      if (!canvas || !zone) return;
+
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const ctx = canvas.getContext('2d', { alpha: true });
+
+      // 1) НИКАКОГО размытия: никаких filter/blur, и хвост почти отсутствует
+      const codeLines = [
+        "int i = 4;",
+        "for (int i = 0; i < n; i++) {}",
+        "double x = 0.0;",
+        "float p = 0.25f;",
+        "bool ok = true;",
+        "if (x > 0) { y++; }",
+        "return result;",
+        "const int N = 1000;",
+        "std::vector<int> a;",
+        "a.push_back(i);",
+        "map<string,int> m;",
+        "m[\"key\"] = 1;",
+        "function simulate(t) { }",
+        "let total = 0;",
+        "total += value;",
+        "while (k < 10) k++;",
+        "try { run(); } catch(e) {}",
+        "class Model { }",
+        "public static void main(String[] args) {}",
+        "SELECT * FROM table;",
+        "WHERE value > 0;",
+        "x = x + dt * v;",
+        "y = f(x);",
+        "p = p / sum;",
+        "forecast(model);"
+      ];
+
+      let w=0, h=0, dpr=1;
+      function resize(){
+        const r = zone.getBoundingClientRect();
+        dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+        w = Math.max(1, Math.floor(r.width));
+        h = Math.max(1, Math.floor(r.height));
+        canvas.width = Math.floor(w * dpr);
+        canvas.height = Math.floor(h * dpr);
+        canvas.style.width = w + "px";
+        canvas.style.height = h + "px";
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      }
+      const ro = new ResizeObserver(resize);
+      ro.observe(zone);
+      window.addEventListener('resize', resize);
+      resize();
+
+      function makeColumns(){
+        const fontSize = Math.max(14, Math.min(18, Math.floor(w/80)));
+        const colW = Math.floor(fontSize * 2.4);
+        const colsCount = Math.max(10, Math.floor(w / colW));
+        const arr = [];
+        for (let i=0;i<colsCount;i++){
+          arr.push({
+            x: i*colW + (colW/2),
+            y: Math.random() * h,
+            speed: 0.085 + Math.random()*0.18,
+            fontSize,
+            text: codeLines[Math.floor(Math.random()*codeLines.length)]
+          });
+        }
+        return arr;
+      }
+      let cols = makeColumns();
+
+      const colors = [
+        "rgba(255,255,255,0.5)",
+        "rgba(137,174,226,0.5)",
+        "rgba(106,166,255,0.5)",
+        "rgba(124,240,199,0.5)"
+      ];
+
+      function inView(){
+        const r = zone.getBoundingClientRect();
+        return r.bottom > 0 && r.top < window.innerHeight;
+      }
+
+      let last = performance.now();
+      function tick(now){
+        const dt = Math.min(32, now - last);
+        last = now;
+
+        if (prefersReduced){
+          ctx.clearRect(0,0,w,h);
+          return;
+        }
+        if (!inView()){
+          requestAnimationFrame(tick);
+          return;
+        }
+
+        // почти без хвоста: очищаем полностью с очень слабой "дымкой"
+        ctx.clearRect(0,0,w,h);
+        // если нужен совсем без следов — оставь только clearRect. Сейчас оставим 0.02 для мягкости.
+        ctx.fillStyle = "rgba(4,10,26,0.02)";
+        ctx.fillRect(0,0,w,h);
+
+        ctx.save();
+        ctx.globalCompositeOperation = "source-over";
+
+        for (const c of cols){
+          c.y += c.speed * dt;
+
+          if (Math.random() < 0.010){
+            c.text = codeLines[Math.floor(Math.random()*codeLines.length)];
+          }
+
+          const color = colors[Math.floor(Math.random()*colors.length)];
+          ctx.font = `600 ${c.fontSize}px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`;
+          ctx.fillStyle = color;
+          ctx.globalAlpha = 1;
+
+          ctx.fillText(c.text, c.x, c.y);
+
+          if (c.y > h + 30){
+            c.y = -30 - Math.random()*160;
+            c.speed = 0.085 + Math.random()*0.18;
+          }
+        }
+
+        ctx.restore();
+        requestAnimationFrame(tick);
+      }
+
+      let lastW = w;
+      setInterval(() => {
+        if (Math.abs(w - lastW) > 80){
+          cols = makeColumns();
+          lastW = w;
+        }
+      }, 900);
+
+      requestAnimationFrame(tick);
+    })();
+  </script>
+
+</body>
+</html>
